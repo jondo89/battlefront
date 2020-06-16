@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Cleaner-Wrasse is an open-source issue tracking CRUD designed to duplicate the Github issue tracking system. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.">
+  <meta name="keywords" content="comments,boilerplate,mongodB, NodeJS, expressjs , Handlebars.js">
+  <meta name="author" content="Jonathan Davies">
+  <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />
+  <title>{{siteName}}</title>
+  {{>css}}
+</head>
+<body id="page-top">
+ <script async defer src="https://buttons.github.io/buttons.js"></script>
+ {{>header}}
+ {{>javascript}}
+ <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
+ <style type="text/css">
+  #toToppo a {
+    padding: 5px 5px;
+    background: #000;
+    color: #fff;
+    position: fixed;
+    z-index: -15px;
+    bottom: 15px;
+    right: 15px;
+    display: none;
+    text-decoration: none;
+    border-radius: 5px
+  }
+</style>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+                //Check to see if the window is top if not then display button
+                $(window).scroll(function(){
+                  if ($(this).scrollTop() > 100) {
+                    $('#toToppo a').fadeIn();
+                  } else {
+                    $('#toToppo a').fadeOut();
+                  }
+                });
+                //Click event to scroll to top
+                $('#toToppo a').click(function(){
+                  $('html, body').animate({scrollTop : 0},600);
+                  return false;
+                });
+              });
+            </script>
+            <header class="masthead">
+              <div class="container h-100">
+                <div class="row h-100">
+                  <div class="col-lg-7 my-auto">
+                    <div class="header-content mx-auto">
+
+                      <h1 class="display-1"><img src="/img/Logo square inverse 50x50.png">  Battlefront - Posleen Wars.</h1> 
+                      <p class="lead">Backend database. </p>
+                      <div style="padding-top: 25px">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 my-auto">
+                    {{#unless user}} 
+                    {{> signuphomepage}}  
+                    {{/unless}}
+                  </div>
+                </div>
+              </div>
+            </header>
+ 
+            <div class="container">
+<br>
+            </div>
+<hr>
+            <div class="container">
+              <h1>Things to work on .</h1>
+              <p><code>1. Set up semmini</code></p>
+              <p><code>2. Shift key forms to heavylifting.</code></p>
+              <p><code>3. create new heroku database.</code></p>
+              <p><code>4. integrate unity to the mongodb.</code></p>
+
+              <br>
+            </div>
+          </div>
+          <p></p>
+        </section>
+      </div>
+      <!-- Modal -->
+      <div class="modal fade bd-example-modal-lg" tabindex="-1" id="exampleModalScrollable" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalScrollableTitle">Flag and Issue</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="ajaxFormLocationmodal"></div>      </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {{>footer}}
+      </body>
+      </html>

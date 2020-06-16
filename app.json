@@ -1,0 +1,22 @@
+{
+		  "name": "Battlefront",
+		  "description": "A tribute to John Ringos Posleen Wars.",
+		  "sitename": "Battlefront",
+		  "website": "https://posleen-wars.herokuapp.com/",
+		  "repo": "https://github.com/jondo89/battlefront",
+		  "scripts": {},
+		  "env": {
+		    "MONGODB_URI": {
+		      "required": true
+		    }
+		  },
+		  "formation": {},
+		  "addons": [
+		    "mongolab"
+		  ],
+		  "buildpacks": [
+		    {
+		      "url": "heroku/nodejs"
+		    }
+		  ]
+		}

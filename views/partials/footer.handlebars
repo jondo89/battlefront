@@ -1,0 +1,39 @@
+ <style type="text/css">
+  @media screen and (max-width: 600px) {
+    .mobilehide {
+      visibility: hidden;
+      clear: both;
+      float: left;
+      margin: 10px auto 5px 20px;
+      width: 28%;
+      display: none;
+    }
+  }
+</style>
+<hr>
+<div class="container" style="padding-top: 45px;padding-bottom: 75px">
+  <div class="row">
+ 
+ <div class="col-md-6" style="">
+  <a href="/" style="font-size: 25px;text-decoration: none;color: black">
+    <h3><img src="/img/Logo square 300x300.png" style="height: 35px"> {{siteName}}</h3>
+  </a>   
+  <small>{{description}}</small>
+  <p>
+    <h4>More details</h4>
+    <a href="/terms">Terms</a> | <a href="/privacy">Privacy</a> | <a href="/contact">Contact</a>
+  </div>
+ <div class="col-md-6 mobilehide" style="">
+  {{#unless user}}
+  <h4>Sign up to get started!</h4>
+  <span><small><p><a href="/signup" class="btn btn-success">Sign up</a>  Register as a new user.</p></small></span>
+  {{/unless}}
+  <h4>Issues <small>List your issues with the interface.</small></h4>
+  <ul>
+    <li><a href="/issues/view">Issues</a></li>
+  </ul> 
+</div>
+
+</div>
+</div>
+

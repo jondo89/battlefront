@@ -100,6 +100,7 @@ app.use(function(req, res, next) {
   if(req.user){
     res.locals.user = JSON.parse(JSON.stringify(req.user));
   }
+    res.locals.TRACKINGCODEGA = process.env.TRACKINGCODEGA;//expose the google analytics tracking code for use.
   next();
 });
 app.use(express.static(path.join(__dirname, 'public')));
@@ -134,9 +135,27 @@ var fraternate = require("fraternate");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
+
 /////////////////////////////////////////////////
 ////       HEAVYLIFTING NPM MODULE          //// 
 ///////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////
+////       GET THE HEAVYLIFTING DATABASE STRUCTURE        //// 
+//////////////////////////////////////////////////////////////
+const fs = require('fs');//use the file system plugin 
+var rawdata = fs.readFileSync('./heavylifting.json'); // get the heavylifting json and parse into an object for use.
+var collections = JSON.parse(rawdata); 
+collections = collections.collections
+/////////////////////////////////////////////////////////
+////       USED FOR THE COLLECTION INJECTION        //// 
+///////////////////////////////////////////////////////
+app.use(function (req, res, next) {
+  res.locals.collections = collections
+  next();
+})
+
 var heavylifting = require("heavylifting");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/heavylifting/views/partials')
@@ -158,7 +177,16 @@ var semini = require("semini");
 partialsDir.push('./node_modules/semini/views/partials')
 app.use('/', semini);
 
- 
+/////////////////////////////////
+////       HOME             //// 
+///////////////////////////////
+var HomeController = require('./controllers/home');
+app.get('/',
+  HomeController.index
+);
+
+
+
 //////////////////////////////////////////
 ////        CREATE UNIQUE ID         //// 
 ////////////////////////////////////////
@@ -262,6 +290,9 @@ app.use(function(err, req, res, next) {
   res.status(500);
   res.redirect('/500');
 });
+
+
+
 /////////////////////////////
 ////       500          //// 
 ///////////////////////////
@@ -277,13 +308,13 @@ app.get('/500', function(req, res){
 ////       404          //// 
 ///////////////////////////
 app.get('*', function(req, res){
- 
   res.status(404).render('404',{
     siteName : sitename,
     pagetitle : 'Error 404' + ' | '+sitename,
     layout:false
   });
 });
+
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
@@ -291,7 +322,13 @@ if (app.get('env') === 'production') {
     res.sendStatus(err.status || 500);
   });
 }
+
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
+
+
+
+
+
 module.exports = app;

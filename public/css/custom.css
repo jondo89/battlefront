@@ -193,3 +193,8 @@ top: 16px;
   height: 24px;
   border-radius: 50%;
 }
+
+
+.svg-inline--fa {
+    margin-top: 3px!important;
+}

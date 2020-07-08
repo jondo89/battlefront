@@ -20,73 +20,60 @@
     .recaptch-placeholder{
       min-height: 88px;
     }
-  </style><!-- Place this tag in your head or just before your close body tag. -->
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
-        <script async defer src="https://buttons.github.io/buttons.js"></script>
-        {{> javascript}}
-      </head>
-      <div id="fb-root"></div>
-      <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));</script>
-      <body id="page-top">
-        {{> header}}
+  </style>
+      <script async defer src="https://buttons.github.io/buttons.js"></script>
+      {{> javascript}}
+    </head>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <body id="page-top">
+      {{> header}}
+      <section class="cta" style="color: white"> <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-7">
+             <div class="header-content">
+              <div class="header-content-inner" style="text-align:left">
+               <h1> 
+                 {{sitename}} is an <strong>open source</strong> issue tracking boilerplate. 
+               </h1>  
+               <h3 style="color: #c7c7c7">Wrasse is a standalone copy of the GitHub issue tracking system.</h3>
+               <h3 style="color: #c7c7c7">Deploy as a boilerplate directly off GitHub. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
 
-
-
-
-        <section class="cta" style="color: white"> <div class="overlay"></div>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-7">
-               <div class="header-content">
-                <div class="header-content-inner" style="text-align:left">
-     <h1> 
-                       {{sitename}} is an <strong>open source</strong> issue tracking boilerplate. 
-                     </h1>  
-                     <h3 style="color: #c7c7c7">Wrasse is a standalone copy of the GitHub issue tracking system.</h3>
-                      <h3 style="color: #c7c7c7">Deploy as a boilerplate directly off GitHub. It is <strong style="color: white">open-source</strong> and <strong style="color: white">light weight</strong>.  Built with mongodB, NodeJS, expressjs and Handlebars.js and designed for <strong style="color: white">flexibility</strong>.</h3>
-         
-
-                 <div style="padding-top: 25px">
-                  <div class="btn-group btn-group-lg" role="group">
-                    <a href="/signup" class="btn btn-primary">Get Started.</a>
-                    <a href="/issues" class="btn btn-default">View Issues.</a>
-                  </div>
+               <div style="padding-top: 25px">
+                <div class="btn-group btn-group-lg" role="group">
+                  <a href="/signup" class="btn btn-primary">Get Started.</a>
+                  <a href="/issues" class="btn btn-default">View Issues.</a>
                 </div>
-                 <div style="text-align: center;padding-top: 25px">
-                    <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
-                    <a class="github-button" href="https://github.com/Isithelo/{{sitename}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{sitename}} on GitHub">Star</a> 
-                  </a>
-                </div>
-
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-5">
-          <div class="header-content" style="padding-top: 25px">
-            <div class="header-content-inner">
-              {{> signuphomepage}}
+              </div>
+              <div style="text-align: center;padding-top: 25px">
+                <h4 class="media-heading">Don’t forget to star on GitHub!</h4>
+                <a class="github-button" href="https://github.com/Isithelo/{{sitename}}" data-size="large" data-show-count="true" aria-label="Star Isithelo/{{sitename}} on GitHub">Star</a> 
+              </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-7">
+      <div class="col-sm-5">
+        <div class="header-content" style="padding-top: 25px">
+          <div class="header-content-inner">
+            {{> signuphomepage}}
+          </div>
         </div>
       </div>
     </div>
-  </section>
-
+    <div class="row">
+      <div class="col-sm-7">
+      </div>
+    </div>
+  </div>
+</section>
 <section style="text-align: center;"> 
   <div class="container">
     <h1>Wrasse is the third phase of a user project management system for NodeJS. </h1>
@@ -150,6 +137,6 @@
     <a href="/signin" class="btn btn-default btn-lg" >Sign in to give it a try !</a>  
   </div>
 </section>
-  {{> analytics}}
+{{> analytics}}
 </body>
 </html>

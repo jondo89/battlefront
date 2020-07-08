@@ -1,6 +1,7 @@
 var User = require('../models/User');
-//set the plugin controller directory
 
+//set the plugin controller directory
+var directory =  '../'
 ///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
@@ -9,37 +10,42 @@ var myModule = require('../app.json');
 var sitename = myModule.sitename
 var website = myModule.website
 var repo = myModule.repo
-
-
-//set the plugin controller directory
-var directory =  __dirname +'/'
-
+  
 ///////////////////////////////////////
 ////       HOME CONTROLLER        //// 
 /////////////////////////////////////
 exports.index = function(req, res) {
 //Perform Routing for Varios user type on the home page.
 if (req.user) {
-  res.render('../../../views/splash', {
-    organizations : req.organizations,
-    organizationsParse:req.organizationsParse,
-    pagetitle: req.user.username +' | '+sitename+'',
-    userorgcomplist:req.userorgcomplist,
-    userorgcomplistParse:req.userorgcomplistParse,
-    componentlist : req.componentlist,
-    componentlistParse : req.componentlistParse,
-    componentlistall : req.componentlistall,
-    componentlistParseall : req.componentlistParseall,
-    bs4 : true,
-      items:req.items, //list of all heavy-lifting DB entires
-      itemsParse:req.itemsParse,//list of all heavy-lifting DB entires
+if (req.user.firstsignup == '/signup-step2') {
+    res.redirect('/signup-step2')
+} else {
+    if (!req.user.image) {
+req.flash('success', { msg: 'Get started by customizing your user account. <a href="/users/'+req.user.username+'/settings/profile" class="btn btn-outline-secondary">Edit your profile</a>' });
+ res.render('../node_modules/fraternate/views/splash', {
+        organizations : req.organizations,
+        organizationsParse:req.organizationsParse,
+        pagetitle: req.user.username +' | '+sitename+'',
+        siteName : sitename,
+            bs4 : true,
     });
 } else {
-  res.render('../../../views/home', {
-    layout: false
+     res.render('../node_modules/fraternate/views/splash', {
+        organizations : req.organizations,
+        organizationsParse:req.organizationsParse,
+        pagetitle: req.user.username +' | '+sitename+'',
+        siteName : sitename ,
+        bs4 : true,
+    });
+}
+}
+} else {
+  res.render('../public/homepage/index', {
+    layout: false,
+    siteName : sitename,
+    sitekey:process.env.SITE_KEY,
+    homejs:'home' ,bs4 : true,
   });
 }
 };
-
-
  

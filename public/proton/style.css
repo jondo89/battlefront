@@ -4,7 +4,7 @@
 .jstree-container-ul {
   display: block;
   margin: 0;
-  padding: 0;
+  padding: 0px;
   list-style-type: none;
   list-style-image: none;
 }
@@ -309,10 +309,10 @@
   box-shadow: inset 0 0 1px #76b6ec;
 }
 .jstree-proton .jstree-clicked {
-  background: #3392e3;
+  background: #0366d6;
   color: #ffffff;
   border-radius: 3px;
-  box-shadow: inset 0 0 1px #3392e3;
+  box-shadow: inset 0 0 1px #0366d6;
 }
 .jstree-proton .jstree-no-icons .jstree-anchor > .jstree-themeicon {
   display: none;
@@ -380,13 +380,13 @@ filter: gray;
   background: #76b6ec;
 }
 .jstree-proton .jstree-wholerow-clicked {
-  background: #3392e3;
-  background: -moz-linear-gradient(top, #3392e3 0%, #3392e3 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #3392e3), color-stop(100%, #3392e3));
-  background: -webkit-linear-gradient(top, #3392e3 0%, #3392e3 100%);
-  background: -o-linear-gradient(top, #3392e3 0%, #3392e3 100%);
-  background: -ms-linear-gradient(top, #3392e3 0%, #3392e3 100%);
-  background: linear-gradient(to bottom, #3392e3 0%, #3392e3 100%);
+  background: #0366d6;
+  background: -moz-linear-gradient(top, #0366d6 0%, #0366d6 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #0366d6), color-stop(100%, #0366d6));
+  background: -webkit-linear-gradient(top, #0366d6 0%, #0366d6 100%);
+  background: -o-linear-gradient(top, #0366d6 0%, #0366d6 100%);
+  background: -ms-linear-gradient(top, #0366d6 0%, #0366d6 100%);
+  background: linear-gradient(to bottom, #007bff 0%, #007bff 100%);
   /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color1', endColorstr='@color2',GradientType=0 );*/
 }
 .jstree-proton .jstree-node {
@@ -396,14 +396,14 @@ filter: gray;
   min-width: 22px;
 }
 .jstree-proton .jstree-anchor {
-  line-height: 22px;
+  line-height: 19px;
   margin: 0px 0 2px;
   height: 22px;
 }
 .jstree-proton .jstree-icon {
   width: 22px;
-  height: 22px;
-  line-height: 22px;
+  height: 16px;
+  line-height: 21px;
 }
 .jstree-proton .jstree-icon:empty {
   width: 22px;
@@ -414,7 +414,8 @@ filter: gray;
   margin-right: 22px;
 }
 .jstree-proton .jstree-wholerow {
-  height: 22px;
+  height: 24px;
+  line-height: inherit;
 }
 .jstree-proton .jstree-node,
 .jstree-proton .jstree-icon {
@@ -515,6 +516,7 @@ filter: gray;
   background-size: 320px 96px;
   background-image: none;
   background-position: 0 0;
+  /* padding: 5px; */
 }
 .jstree-proton > .jstree-container-ul .jstree-loading > .jstree-ocl {
   background: url("throbber.gif") center center no-repeat;
@@ -1032,7 +1034,7 @@ filter: gray;
     background: #76b6ec;
   }
   .jstree-proton-responsive .jstree-wholerow-clicked {
-    background: #3392e3;
+    background: #0366d6;
   }
   .jstree-proton-responsive .jstree-children .jstree-open + .jstree-open {
     box-shadow: none;

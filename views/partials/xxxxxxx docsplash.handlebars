@@ -1,0 +1,366 @@
+ 
+<style type="text/css">
+	.card-columns {
+		column-count: 5;
+	}
+</style>
+<div>
+	<div class="">
+		<h1 style = "text-transform:capitalize;" class="display-1">{{collectioname}}</strong></h1>
+		<p class="lead">Discover the {{siteName}} {{collectioname}}. Use the navigation tree to interact with the <strong>{{collectioname}}</strong>.</p>
+		<p></p>
+		<nav>
+			<div class="nav nav-tabs" id="nav-tab" role="tablist">
+				<a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Why use {{siteName}}?</a>
+				<a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">How does {{siteName}} work?</a>
+			</div>
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+				<br>
+				<div class="alert alert-primary" role="alert">
+					<h3>Why use {{siteName}}?</h3>
+					<p>{{siteName}} is a collaborative platform for creating detailed design calculations and purchasing schedules for belt conveyor systems.
+					</p>
+					<p>{{siteName}} aims to improve the speed of design, detailing and purchasing of a conveyor system. It aims at reducing the complexity of sourcing equipment, specifying designs, generation and management of equipment lists and generally reducing the complexity of OEM product selection.</p>
+					<p>
+					{{siteName}} is comprised of 4 main elements, Database, Components, Shop and Assemblies.</p>
+					
+				</div>
+<!--
+
+
+<div style="text-align: center">
+<div class="btn-group" role="group" aria-label="Basic example">
+<a role="button" class="btn btn-outline-secondary" href="/database/docs"><i class="fas fa-database"></i></a>
+<a role="button" class="btn btn-outline-secondary" href="/components/docs"><i class="fas fa-cog"></i></a>
+<a role="button" class="btn btn-outline-secondary" href="/shop/docs"><i class="fas fa-shopping-cart"></i></a>
+<a role="button" class="btn btn-outline-secondary" href="/assemblies/view"><i class="fas fa-cogs"></i></a>
+</div>	
+</div>
+
+
+<div class="alert alert-success" role="alert">
+<h3>What are the Shiftbulk design philosophies.</h3>
+<p>The following key design philosophies are utilized in the structural build-up of Shiftbulk and the its user interface.</p>
+<ul>
+<li>Design of the platform should allow for replication of every system and sub-system.</li>
+<li>Modern simplistic user interface, using common styling.</li>
+<li>Designed to replicate the GitHub user system, with individual and organizational user structures.</li>
+<li>Data storage should be as simple as possible with no encryption or obfuscation.</li>
+<li>Design of an engineered system is complex, ensure that the software manages the complexity.</li>
+<li>User changes and tracking should be available at every system and sub-system level.</li>
+</ul>
+</div>
+-->
+		</div>
+		<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+			<br>
+			<div class="alert alert-primary" role="alert">
+				<h3>How does it work?</h3>
+				<p>The <strong>{{collectioname}}</strong> page is used to store elements which can be combined into components and shop items. These shop items and components can then be used to develop assemblies, which are in effect purchasing and design schedules, which can be used to develop you project documentation for your new or existing conveyor system.</p>
+				<p>Layered into the components and assemblies is the calculation system.</p>
+				<p>Use the navigation menu to browse the datasets and items for the <strong>{{collectioname}}</strong> page. Each item is revision tracked and can be commented on to ensure a detailed history of edits is maintained. </p>
+				<p>
+				The collaborative nature of the site ensures that complete traceability in the design process is maintained.</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Recent Contributions</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Recent activity</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Open Issues</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+  				<h3><small>Click on the item to view the days contributions.</small></h3>
+<div class="card" >
+ 
+  <div class="card-body">
+	<div id="cal-heatmap" style="text-align: center;"></div>
+			<div id="loadings" style="text-align: center;"><i class="fas fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span></div>
+  </div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  	<h3> <small>Details of your interaction on the site are shown below.</small></h3> 
+		<div>
+			<div id="recentActivity">
+				<div id="loadings" style="text-align: center;"><i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span></div>
+			</div>
+		</div>
+  </div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+	<br>
+	<h5 class="display-4"></h5>
+	<p>The following open issues are applicable to the {{collectioname}}.</p>
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+		<li class="nav-item">
+			<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Issues</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">New Issue</a>
+		</li>
+	</ul>
+	<div class="tab-content" id="myTabContent">
+		<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			<br>
+			<table id="issuetables" class="table table-bordered mt-5">
+				<thead>
+					<tr>
+						<th scope="col">Description</th>
+						<th scope="col">Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					{{#each issues}}
+					<tr>
+						<td>
+							<div class="media">
+								{{#if this.entry.userDetail.image}}
+								<img src="{{this.entry.userDetail.image}}"  class="align-self-center mr-3 col-1">
+								{{else}}
+								<img src="{{this.entry.userDetail.gravatar}}"  class="align-self-center mr-3 col-1">
+								{{/if}}
+								<div class="media-body">
+									<h5 class="card-title">{{this.userowner}}  </h5>
+									<p class="card-text">{{this.entry.5ccfc744361c876524d9c16e}}</p>
+									<span class="badge badge-primary"><i class="fas fa-exclamation-circle"></i> {{this.entry.5cd016ab1422c302dc2a25ef}}</span>
+								</div>
+							</div>
+						</td>
+						<td>
+							 {{moment this.created "MM/DD/YYYY h:mm:ss"}}
+						</td>
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+			<br>
+			{{#if user}}
+			<div class="row"  style="padding-bottom: 10px">
+				<div class="col-2" style="text-align: right;"> 
+					{{#if user.image}}
+					<img onerror="user.src='{{user.gravatar}}'"" src="{{user.image}}" class="rounded float-left" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					{{else}}
+					<img src="{{user.gravatar}}" class="navbar-avatar-pic" style="width: 65px;border-radius: 5px;border: 1px;border-color: #d8d8d8;border-style: solid;">
+					{{/if}}
+				</div>
+				<div class="col-10">
+					<div class="card bubble">
+						<div class="card-header"><h5>New Issue</h5> <p><small><span class="badge badge-success"><i class="fas fa-exclamation-circle"></i> New</span>  Comment on now</p></small></div>
+						<div class="card-body">
+							<p></p>
+							<div>
+								<div id="5b46d4049be2513e68c56ca3" data-idform="5b46d4049be2513e68c56ca3" data-parent="5cd3ab579b0482120065a679"></div>              
+								<div id="formAreaModal"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			{{else}}
+			<div class="row"  style="padding-bottom: 10px">
+				<div class="col-12">
+					<div class="alert alert-warning" role="alert">
+						<a href="/signup" class="btn btn-outline-success">Sign up for free</a><strong> to join this conversation on {{siteName}}</strong>. Already have an account? <a href="/signin">Sign in to comment</a>
+					</div>
+				</div>
+			</div>
+			{{/if}}
+		</div>
+	</div>
+	<script type="text/javascript">
+	var userid = '{{{user._id}}}'
+/////////////////////////
+/////  INITIALIZE   ///// 
+/////////////////////////
+$(document).ready(function() {
+ 
+	var table = $('#issuetables').DataTable({
+		'destroy':true,
+		"pagingType": "numbers",        
+		"dom": 'Bfrtip',"autoWidth": true,
+		 "order": [[ 1, "desc" ]],
+		"buttons": [
+		]
+	});
+});
+///////////////////////////// 
+//////  INITIALISE    //////
+/////////////////////////// 
+$( document ).ready(function() {
+	//getuserdeteails()
+});
+function getuserdeteails(){
+	jQuery.ajax({
+		'async': true,
+		'global': false,
+		'url': '/database/getuserdetails/'+userid,
+		'success': function (dataSchemaObject) {
+			//console.log(dataSchemaObject)
+			itemsParse = JSON.parse(dataSchemaObject.itemsParse)
+			//componentlistParse = JSON.parse(dataSchemaObject.componentlistParse)
+			//componentlistParseall = JSON.parse(dataSchemaObject.componentlistParseall)
+			//userorgcomplistParse = JSON.parse(dataSchemaObject.userorgcomplistParse)
+			heatmap()
+			recentActivity()
+		}
+	});
+}
+function recentActivity(){
+	if (itemsParse) {
+		var html = ''
+		html += '<table class="table  table-bordered" id="recentActivityTable">'
+		html += '<thead>'
+		html += '<tr>'
+		html += '<th>'
+		html += '</th>'
+		html += '<th>'
+		html += 'Date'
+		html += '</th>'
+		html += '<th style="text-align:center">'
+		html += 'Function'
+		html += '</th>'
+		html += '</tr>'
+		html += '</thead>'
+		html += '<tbody>'
+		for (var i = itemsParse.length - 1; i >= 0; i--) {
+			html += '<tr>'
+			html += '<td class="details-control" style="text-align:center;vertical-align:middle; " id="'+itemsParse[i]._id+'" data-parentid="" data-childType=""><i class="fa fa-plus-square" aria-hidden="true" ></i></td>'
+			html += '<td>'
+			html += itemsParse[i].created
+			html += '</td>'
+			html += '<td  style="text-align:center">'
+			switch (true){
+				case (itemsParse[i].revision == 'created'):
+				html +='<span class="label label-success">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				case (itemsParse[i].revision == 'deleted'):
+				html +='<span class="label label-danger">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				case (itemsParse[i].revision == 'updated'):
+				html +='<span class="label label-primary">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break;
+				default : 
+				html +='<span class="label label-default">'
+				html += itemsParse[i].revision
+				html +='</span>'
+				break ;
+			}
+			html += '</td>'
+			html += '</tr>'
+		}
+		html += '</tbody>'
+		html += '</table>'
+		$('#recentActivity').html(html)
+		var table = jQuery('#recentActivityTable').DataTable({
+			'destroy':true,
+			"pagingType": "numbers"
+  //  'order': [[ 2, 'asc' ]] ,
+});
+  //Add event listener for opening and closing details
+  jQuery('#recentActivityTable tbody').on('click', 'td.details-control', function () {
+  	var tr = jQuery(this).closest('tr');
+  	var row = table.row( tr );
+  	if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();//////////////////////////////////////
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            //it is async , and the canvas is not rendered 
+            row.child(formatDefault(this.id))
+            row.child.show();
+            tr.addClass('shown');
+            // Warning Duplicate IDs
+            $('[id]').each(function(){
+            	var ids = $('[id="'+this.id+'"]');
+            	if(ids.length>1 && ids[0]==this){
+            		$( this ).css( "color", "red" )
+            		$( this ).css( "background", "green" )
+            		console.warn('Multiple IDs #'+this.id);
+            	}
+            });
+        }
+    });
+}
+}
+////////////////////////////////////////////////////////////////////
+////////////        FORMIDsABLE VIEW EXTRA DETAIL         ///////////
+///////////////////////////////////////////////////////////////////
+function formatDefault ( d ) {
+  // `d` is the original data object for the row
+  var html=''
+  for (var i = itemsParse.length - 1; i >= 0; i--) { 
+  	if (d == itemsParse[i]._id) {
+  		html += '<pre>'+JSON.stringify(itemsParse[i].entry, null, 2)+'</pre>'
+  	}
+  }
+  return html;
+}
+///////////////////////////// 
+//////  HEAT MAP      //////
+/////////////////////////// 
+function heatmap(){
+ 
+	$('#loading').html('<i class="fa fa-spinner fa-spin fa-1x fa-fw"></i><span>Loading...</span>')
+	var parserData = function (data) {
+		var dataJSON = {};
+		for(var i=0; i<data.length; i++) {
+    var date = new Date(data[i].created); // Date of activity 
+    var sec = date.getTime()/1000; // Convert to sec
+    // Pair "Key-Value" for calendar data
+sec=sec.toFixed(0)
+    if(dataJSON[sec]) {
+    	dataJSON[sec]++;
+    } else {
+    	dataJSON[sec] = 1;
+    }
+}
+$('#loadings').html('')
+ 
+return dataJSON;
+}
+$('#jsons').html('hewere',JSON.stringify(itemsParse, null, 2))
+var months = 8
+var cal = new CalHeatMap();
+cal.init({
+	itemSelector: "#cal-heatmap",
+	domain: "month",
+	subDomain: "day",
+	legendColors: {
+		empty: "#ededed",
+		min: "#ededed",
+		max: "#0366d6"
+	},
+	//cellSize: 20,
+	//subDomainTextFormat: "%d",
+  range: months,
+  start:moment.utc(moment().subtract(months, 'months')).valueOf(),//get moment less range -1 months , then convert to UTC value of for cal heat map.
+   data: itemsParse, // Dates Array
+   afterLoadData: parserData      // Parser function
+});
+}
+</script>
+-->
+<br>

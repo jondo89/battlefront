@@ -5,7 +5,7 @@ var dotenv = require('dotenv');
 dotenv.config()
 var localhost = 'localhost:'+process.env.LOCALHOSTPORT
 
-var myModule = require('../app.json');
+var myModule = require('./app.json');
 var expected = myModule.website//Get the app.json details for the website.
 
 module.exports = function(grunt) {

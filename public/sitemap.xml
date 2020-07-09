@@ -1912,21 +1912,6 @@
     <loc>https://posleen-wars.herokuapp.com/issues/view/get</loc>
   </url>
   <url>
-    <loc>https://posleen-wars.herokuapp.com/database/Blank</loc>
-  </url>
-  <url>
-    <loc>https://posleen-wars.herokuapp.com/database/www.ringspann.co.za</loc>
-  </url>
-  <url>
-    <loc>https://posleen-wars.herokuapp.com/database/www.demagcranes.com</loc>
-  </url>
-  <url>
-    <loc>https://posleen-wars.herokuapp.com/database/Health%20,%20Safety%20and%20the%20Environment</loc>
-  </url>
-  <url>
-    <loc>https://posleen-wars.herokuapp.com/database/AATC000170</loc>
-  </url>
-  <url>
     <loc>https://posleen-wars.herokuapp.com/issues/view/issuesview</loc>
   </url>
   <url>
@@ -1973,5 +1958,20 @@
   </url>
   <url>
     <loc>https://posleen-wars.herokuapp.com/issues/view/viewgroupajax</loc>
+  </url>
+  <url>
+    <loc>https://posleen-wars.herokuapp.com/database/Blank</loc>
+  </url>
+  <url>
+    <loc>https://posleen-wars.herokuapp.com/database/www.ringspann.co.za</loc>
+  </url>
+  <url>
+    <loc>https://posleen-wars.herokuapp.com/database/www.demagcranes.com</loc>
+  </url>
+  <url>
+    <loc>https://posleen-wars.herokuapp.com/database/Health%20,%20Safety%20and%20the%20Environment</loc>
+  </url>
+  <url>
+    <loc>https://posleen-wars.herokuapp.com/database/AATC000170</loc>
   </url>
 </urlset>

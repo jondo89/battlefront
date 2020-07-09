@@ -1,3 +1,13 @@
+//Run with
+//grunt
+const express = require('express');
+var dotenv = require('dotenv');
+dotenv.config()
+var localhost = 'localhost:'+process.env.LOCALHOSTPORT
+
+var myModule = require('../app.json');
+var expected = myModule.website//Get the app.json details for the website.
+
 module.exports = function(grunt) {
 	grunt.initConfig({
 		nodemon: {
@@ -12,7 +22,7 @@ module.exports = function(grunt) {
 				},
         //cmd: "executable",  
         args: [
-        'c:/wrasse/index.js'
+        '/index.js'
         ]
     },runTests: {
     	options: {
@@ -23,12 +33,12 @@ module.exports = function(grunt) {
     	options: {
     		wait: false
     	},
-       exec: 'node ./public/mycrawler.js' // <-- use the exec key.
+       exec: 'node ./public/admin_localhostcrawler.js' //This will generate a site map using the local host.
    }
 },
 open: {
 	startServ: {
-		path: 'http://localhost:5000',
+		path: localhost,
 		app: 'Google Chrome'
 	}
 },

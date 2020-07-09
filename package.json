@@ -50,7 +50,6 @@
 				"hooks-fixed": "^2.0.2",
 				"http-errors": "^1.8.0",
 				"ipaddr.js": "^1.9.1",
-				"jest": "^25.5.4",
 				"jquery": "^3.5.1",
 				"kareem": "^1.5.0",
 				"method-override": "^2.3.10",
@@ -78,10 +77,13 @@
 				"serve-favicon": "^2.5.0",
 				"serve-static": "^1.14.1",
 				"sitemap-generator": "^8.5.0",
+				"sitemap-to-array": "^6.0.0",
 				"supertest": "^4.0.2",
 				"vary": "^1.1.2"
 		},
-		"devDependencies": {},
+		"devDependencies": {
+				"jest": "^25.5.4"
+		},
 		"scripts": {
 				"test": "echo \"Error: no test specified\" && exit 1"
 		},

@@ -128,18 +128,6 @@ app.use(function(req, res, next) {
 /////////////////////////////
 
 
-///////////////////////////////////////////////
-////       FRATERNATE NPM MODULE          //// 
-/////////////////////////////////////////////
-var fraternate = require("fraternate");
-//Append the partial directory inside the NPM module.
-partialsDir.push('./node_modules/fraternate/views/partials')
-app.use('/', fraternate);
-
-/////////////////////////////////////////////////
-////       HEAVYLIFTING NPM MODULE          //// 
-///////////////////////////////////////////////
-
 
 //////////////////////////////////////////////////////////////
 ////       GET THE HEAVYLIFTING DATABASE STRUCTURE        //// 
@@ -155,6 +143,21 @@ app.use(function (req, res, next) {
   res.locals.collections = collections
   next();
 })
+
+///////////////////////////////////////////////
+////       FRATERNATE NPM MODULE          //// 
+/////////////////////////////////////////////
+var fraternate = require("fraternate");
+//Append the partial directory inside the NPM module.
+partialsDir.push('./node_modules/fraternate/views/partials')
+app.use('/', fraternate);
+
+/////////////////////////////////////////////////
+////       HEAVYLIFTING NPM MODULE          //// 
+///////////////////////////////////////////////
+
+
+
 
 var heavylifting = require("heavylifting");
 //Append the partial directory inside the NPM module.
@@ -184,7 +187,9 @@ var HomeController = require('./controllers/home');
 app.get('/',
   HomeController.index
 );
-
+app.get('/contact',
+  HomeController.contact
+); 
 
 
 //////////////////////////////////////////
@@ -327,8 +332,6 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
-
-
-
+ 
 
 module.exports = app;

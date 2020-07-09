@@ -27,4 +27,4 @@ Disallow: /unlink/
 Disallow: /auth/
 Disallow: /licence/
 
-Sitemap: https://wrasse.herokuapp.com/sitemap.xml
+Sitemap: https://posleen-wars.herokuapp.com/sitemap.xml

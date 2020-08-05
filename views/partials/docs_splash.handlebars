@@ -1,0 +1,56 @@
+<style type="text/css">
+	.card-columns {
+		column-count: 5;
+	}
+</style>
+<div class="row">
+  {{#if navmenu.0.entry.image}}
+  <div class="col-9">
+    {{else}}
+    {{#if navmenu.0.image}}
+    <div class="col-9">
+      {{else}}
+      <div class="col-12">
+       {{/if}}
+       {{/if}}
+       <h1 class="display-4" style="min-height: 67px" >
+        {{#unless navmenu.0.entry.icon}}
+        <span class="doc_html_icon">
+          <i class="display-4 far fa-folder-open"></i> 
+        </span>
+        {{else}}
+        <i class="display-4 {{navmenu.0.entry.icon}}"></i> 
+        {{/unless}}      
+        {{#if navmenu.0.entry.descriptionpage}}
+        {{navmenu.0.entry.descriptionpage}}
+        {{else}}
+        {{navmenu.0.name}}
+        {{/if}}   
+      </h1>
+    </div>
+    {{#if navmenu.0.entry.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " src="{{navmenu.0.entry.image}}">    
+    </div>
+    {{/if}}
+    {{#if navmenu.0.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " src="{{navmenu.0.image}}">    
+    </div>
+    {{/if}}
+    <div class="col-md-12">
+      <p class="lead">
+        {{dots 555 navmenu.0.entry.detail}}
+      </p>
+    </div>
+  </div>
+<nav>
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <br>
+    <div class="alert alert-primary" role="alert">
+      <h3>{{siteName}}</h3>
+      <p>{{siteName}} is a collaborative online database , that is used to populate assests in a unity game.
+      </p>
+    </div>
+  </div>
+<br>

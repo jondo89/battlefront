@@ -39,7 +39,7 @@ mongoose.set('useUnifiedTopology', true);
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 } else {
-  mongoose.connect(process.env.MONGODB, {useNewUrlParser: true});
+  mongoose.connect(process.env.MONGODB, {useNewUrlParser: true,ignoreUndefined: true});
 }
 //Mongo error trap.
 mongoose.connection.on('error', function() {
@@ -50,7 +50,7 @@ mongoose.connection.on('error', function() {
 var db = mongoose.connection;
 db.once('open', function() {
   // we're connected!
-  console.log('\x1b[36m%s\x1b[0m', 'mongoose connection ok')
+    console.log('\x1b[36m%s\x1b[0m',process.env.MONGODBNAME ,' : mongoose connection ok')
   //compile the schema for mongoose
 });
  
@@ -143,7 +143,6 @@ app.use(function (req, res, next) {
   res.locals.collections = collections
   next();
 })
-
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
@@ -151,19 +150,13 @@ var fraternate = require("fraternate");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
-
 /////////////////////////////////////////////////
 ////       HEAVYLIFTING NPM MODULE          //// 
 ///////////////////////////////////////////////
-
-
-
-
 var heavylifting = require("heavylifting");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/heavylifting/views/partials')
 app.use('/', heavylifting);
- 
 ///////////////////////////////////////////////////
 ////       CLEANER-WRASSE NPM MODULE          //// 
 /////////////////////////////////////////////////
@@ -171,7 +164,6 @@ var cleaner_wrasse = require("cleaner-wrasse");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/cleaner-wrasse/views/partials')
 app.use('/', cleaner_wrasse);
-
 ///////////////////////////////////////////////////
 ////       SEMINI NPM MODULE          //// 
 /////////////////////////////////////////////////
@@ -179,7 +171,6 @@ var semini = require("semini");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/semini/views/partials')
 app.use('/', semini);
-
 /////////////////////////////////
 ////       HOME             //// 
 ///////////////////////////////
@@ -190,8 +181,6 @@ app.get('/',
 app.get('/contact',
   HomeController.contact
 ); 
-
-
 //////////////////////////////////////////
 ////        CREATE UNIQUE ID         //// 
 ////////////////////////////////////////
@@ -243,32 +232,11 @@ var hbs = exphbs.create({
     capitalizeFirst: function (str) {
       return str[0].toUpperCase() + str.slice(1, str.length);
     },
-    'dotdotdot' : function(str) {
+    'dots' : function(arg1,str) {
       if (str) {
-        if (str.length > 16)
-          return str.substring(0,16) + '...';
+        if (str.length > arg1)
+          return str.substring(0,arg1) + '...';
         return str;}
-      },
-      'dotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 200)
-            return str.substring(0,200) + '...';
-          return str;
-        }
-      },
-      'dotdotdotdotdot' : function(str) {
-        if (str) {
-          if (str.length > 400)
-            return str.substring(0,400) + '...';
-          return str;
-        }
-      },  
-      'dots' : function(str) {
-        if (str) {
-          if (str.length > 150)
-            return str.substring(0,150) + '...';
-          return str;
-        }
       },
       'profile' : function(str) {
         if (str) {
@@ -332,6 +300,5 @@ app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
 
- 
 
 module.exports = app;

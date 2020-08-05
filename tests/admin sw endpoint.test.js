@@ -2028,7 +2028,7 @@ for (var i = 0; i < siteIndex.length; i++) {
 	testlist.push(siteIndex[i].loc)	
 }
 
-describe("End point testing of sitemap", () => {
+describe.skip("End point testing of sitemap", () => {
   test.each(testlist)(
     "given %p endpoint should return a 200.",
     async (firstArg,done) => {

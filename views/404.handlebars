@@ -16,24 +16,20 @@
 </head>
 <body>
   {{> javascript}}
-  {{> header}}
-
+  {{> navigation}}
 <style type="text/css">
   * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
-
 body {
   padding: 0;
   margin: 0;
 }
-
 #notfound {
   position: relative;
   height: 100vh;
 }
-
 #notfound .notfound {
   position: absolute;
   left: 50%;
@@ -42,7 +38,6 @@ body {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-
 .notfound {
   max-width: 920px;
   width: 100%;
@@ -51,7 +46,6 @@ body {
   padding-left: 15px;
   padding-right: 15px;
 }
-
 .notfound .notfound-404 {
   position: absolute;
   height: 100px;
@@ -62,7 +56,6 @@ body {
           transform: translateX(-50%);
   z-index: -1;
 }
-
 .notfound .notfound-404 h1 {
   font-family: 'Maven Pro', sans-serif;
   color: #ececec;
@@ -76,7 +69,6 @@ body {
       -ms-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
-
 @media only screen and (max-width: 480px) {
   .notfound .notfound-404 h1 {
     font-size: 162px;
@@ -85,9 +77,7 @@ body {
     font-size: 26px;
   }
 }
-
 </style>
-
   <div id="notfound">
     <div class="notfound">
       <div class="notfound-404">
@@ -98,8 +88,8 @@ body {
       <a class="btn btn-outline-primary btn-lg" href="/">Back To Homepage</a>
     </div>
   </div>
+  <hr>
 {{> footer}}
 {{> analytics}}
 </body>
 </html>
-

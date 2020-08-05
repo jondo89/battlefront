@@ -198,3 +198,6 @@ top: 16px;
 .svg-inline--fa {
     margin-top: 3px!important;
 }
+
+
+html { overflow-y: scroll; }

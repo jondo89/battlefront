@@ -80,7 +80,7 @@ describe("End point testing of Fraternate sitemap", () => {
 
 
  //Check if the get ajax user picuture is returning the test case.
- describe.skip('Check if a user picture is returned.', function() {
+ describe('Check if a user picture is returned.', function() {
   const expected = 'data:image/jpeg';
   it('Check if a user picture is returned.', function(done) {
     request(app)
@@ -97,4 +97,6 @@ describe("End point testing of Fraternate sitemap", () => {
       done();
     });
   });
+
+
 });

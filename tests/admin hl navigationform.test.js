@@ -148,25 +148,6 @@ var navigationtestdata420 = {
   _id: "boo this thhh",
   testing420 : true
 }
-
-var navigationtestdata421 = {
-  active: "true",
-  detail: "421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.",
-  entry:{
-    description: "421 ",
-    descriptionpage: "421 ",
-    detail: "421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.",
-    headings: [],
-    slug: "asd",
-    tabs: []
-  },
-  name: "421 ",
-  parentid: "sfsdfsdfsdfsdfs",
-  revision: "revision",
-  _id: "boo this thhh",
-  testing421 : true
-}
-
 var navigationtestdata422 = {
   active: "true",
   detail: "422 - The parentid is the same as the element id.",
@@ -201,7 +182,8 @@ var navigationtestdata423 = {
   name:  '423',
   parentid: "58d2010b118e812d18654119",
   revision: "created",
-  childType : '58aa74150b9d3241280ecf18'
+  childType : '58aa74150b9d3241280ecf18',
+  testing423:true
 }
 
 var workingEntry1 = {
@@ -406,16 +388,7 @@ var workingEntry6 = {
       done();
     });
   });      
-   test('421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.', function(done) {
-    request(app)
-    .post('/dummydb/admincreatenavigation')
-    .send(navigationtestdata421)
-    .expect(421)
-    .end(function(err, res) {
-      if (err) return done(err);
-      done();
-    });
-  });      
+     
 
    test('422 - The parentid is the same as the element id.', function(done) {
     request(app)

@@ -201,7 +201,8 @@ var navigationtestdata423 = {
   name:  '423',
   parentid: "58d2010b118e812d18654119",
   revision: "created",
-  childType : '58aa74150b9d3241280ecf18'
+  childType : '58aa74150b9d3241280ecf18',
+  testing423:true
 }
 
 var workingEntry1 = {
@@ -318,7 +319,7 @@ var workingEntry6 = {
   	}); 
   	test('410 - Navigation creation - blank data.', function(done) {
   		request(app)
-  		.post('/dummydb/admincreatenavigation')
+  		.post('/dummydb/admincreateraw')
   		.send(navigationtestdata410)
   		.expect(410)
   		.end(function(err, res) {
@@ -328,7 +329,7 @@ var workingEntry6 = {
   	});   
    test('416a - Fail routing with protected id usage. Core ids and elementid', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata416a)
     .expect(416)
     .end(function(err, res) {
@@ -338,7 +339,7 @@ var workingEntry6 = {
   });  
    test('416b - Fail routing with protected id usage. Core ids and elementid', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata416b)
     .expect(416)
     .end(function(err, res) {
@@ -348,7 +349,7 @@ var workingEntry6 = {
   });  
    test('416c - Fail routing with protected id usage. Core ids and elementid', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata416c)
     .expect(416)
     .end(function(err, res) {
@@ -358,7 +359,7 @@ var workingEntry6 = {
   });  
    test('416d - Fail routing with protected id usage. Core ids and elementid', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata416d)
     .expect(416)
     .end(function(err, res) {
@@ -368,7 +369,7 @@ var workingEntry6 = {
   });  
    test('417 - pass a testing variable to the post , with a element id that is blank , to determine if the item is copying the id to the elementid.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata417)
     .expect(417)
     .end(function(err, res) {
@@ -378,7 +379,7 @@ var workingEntry6 = {
   });     
    test('418 - pass a testing variable with an undefined childType to the post to make sure this test is working.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata418)
     .expect(418)
     .end(function(err, res) {
@@ -388,7 +389,7 @@ var workingEntry6 = {
   });
    test('419 - Intitate a check to see if the id or elementid is the parentid. We dont want this to appear on its own tree , so set the parentid to blank.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata419)
     .expect(419)
     .end(function(err, res) {
@@ -398,7 +399,7 @@ var workingEntry6 = {
   });
    test('420 - blank parent ids should fail - that are not he parent id itself.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata420)
     .expect(420)
     .end(function(err, res) {
@@ -408,7 +409,7 @@ var workingEntry6 = {
   });      
    test('421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata421)
     .expect(421)
     .end(function(err, res) {
@@ -419,7 +420,7 @@ var workingEntry6 = {
 
    test('422 - The parentid is the same as the element id.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata422)
     .expect(422)
     .end(function(err, res) {
@@ -429,7 +430,7 @@ var workingEntry6 = {
   });      
       test('423 - The id of the heavylifting sytem is being used as childType. Break here.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(navigationtestdata423)
     .expect(423)
     .end(function(err, res) {
@@ -439,7 +440,7 @@ var workingEntry6 = {
   });   
    test('Create a new nav tree item.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry1)
     .expect(200)
     .end(function(err, res) {
@@ -449,7 +450,7 @@ var workingEntry6 = {
   });
    test('Create a new nav tree item very long sentances.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry2)
     .expect(200)
     .end(function(err, res) {
@@ -459,7 +460,7 @@ var workingEntry6 = {
   });
    test('Edit the primary id.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry3)
     .expect(200)
     .end(function(err, res) {
@@ -469,7 +470,7 @@ var workingEntry6 = {
   });
    test('Create new for editing.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry4)
     .expect(200)
     .end(function(err, res) {
@@ -479,7 +480,7 @@ var workingEntry6 = {
   });   
    test('Edit a field posted previously , This could fail due to non-unique ids being present.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry5)
     .expect(200)
     .end(function(err, res) {
@@ -489,7 +490,7 @@ var workingEntry6 = {
   });   
    test('Post a field that should break the navtree.', function(done) {
     request(app)
-    .post('/dummydb/admincreatenavigation')
+    .post('/dummydb/admincreateraw')
     .send(workingEntry6)
     .expect(200)
     .end(function(err, res) {

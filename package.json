@@ -45,7 +45,7 @@
 				"grunt-run": "^0.8.1",
 				"grunt-shell": "^3.0.1",
 				"grunt-zip-directories": "^1.0.1",
-				"handlebars": "^4.7.6",
+				"handlebars": "^4.7.7",
 				"handlebars-helper-moment": "^0.2.0",
 				"handlebars-helpers": "^0.10.0",
 				"handlebars.moment": "^1.0.4",

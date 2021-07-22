@@ -7,14 +7,14 @@
   <meta name="description" content="{{sitedescription}}">
   <meta name="author" content="{{author}}">
   <meta name="msvalidate.01" content="6F54F88A443C656EFB178CEF11C4E7E9" />
-  <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />  
+  <meta name="google-site-verification" content="{{VERIFICATION_GOOGLE}}" />  
   <meta name="flattr:id" content="ljw99y">
   <title>{{pagetitle}}</title>
   {{>css fontawesome=true bootstrap=true jstree=true datatable=true bootstrap-select=true}}
   {{>javascript bootstrap=true datatable=true fontawesome=true jstree=true readmore=true selectpicker=true}}
 </head>
 <body >
-    {{#if user}}
+  {{#if user}}
   <!-- Modal -->
   <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" id="myModal">
     <div class="modal-dialog modal-lg" role="document">
@@ -32,19 +32,19 @@
 </div> 
 
 {{/if}}
-  {{> navigation}}
-  <style type="text/css">
-    .dt-buttons {
-      padding-top: 15px;
-    }
-    .background-main{
-    }
-  </style>
-  <div class="container-fluid background-main" >
-    {{{body}}}
-    {{> topofpage}}
+{{> navigation}}
+<style type="text/css">
+.dt-buttons {
+  padding-top: 15px;
+}
+.background-main{
+}
+</style>
+<div class="container-fluid background-main" >
+  {{{body}}}
+  {{> topofpage}}
 
-  </div>
+</div>
 
 {{> analytics}}
 {{> footer}}

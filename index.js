@@ -21,6 +21,7 @@ MomentHandler.registerHelpers(Handlebars);
 dotenv.config()
 //Primary app variable.
 var app = express();
+
 ///////////////////////////////////////
 ///////   FAVICON LOCATION    ////////
 /////////////////////////////////////
@@ -98,9 +99,13 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(function(req, res, next) {
+  res.locals.website = myModule.website
+  res.locals.logo = myModule.logo
   if(req.user){
     res.locals.user = JSON.parse(JSON.stringify(req.user));
+    res.locals.themedark = req.user.darkmode;
   }
+    res.locals.VERIFICATION_GOOGLE = process.env.VERIFICATION_GOOGLE;//expose the google analytics tracking code for use.
     res.locals.TRACKINGCODEGA = process.env.TRACKINGCODEGA;//expose the google analytics tracking code for use.
     next();
   });
@@ -118,6 +123,9 @@ app.locals.repo = myModule.repo
 app.locals.author = myModule.author
 app.locals.keywords = myModule.keywords
 app.locals.tagline = myModule.tagline
+
+
+
 //Define the partials directory
 var partialsDir = ['views/partials']
 //Set up css and javasciprt locals.
@@ -184,10 +192,11 @@ app.use('/', semini);
 ////       HOME             //// 
 ///////////////////////////////
 
-
 var organizationController = require("./node_modules/fraternate/controllers/organization");//In order to pass the user orginizational structure this needs to be here.
 var userController = require('./node_modules/fraternate/controllers/user');
 var HomeController = require('./controllers/home');
+
+
 app.get('/',
   organizationController.userorganizations,
   HomeController.index
@@ -195,8 +204,6 @@ app.get('/',
 app.get('/contact',
   HomeController.contact
   ); 
-
-
 
 app.get('/workspace',
   organizationController.userorganizations,
@@ -232,7 +239,6 @@ app.get('/workspace/user/:username/:slug/:template',
 
 
 
-
 //////////////////////////////////////////
 ////        CREATE UNIQUE ID         //// 
 ////////////////////////////////////////
@@ -255,7 +261,7 @@ var hbs = exphbs.create({
   helpers: {
    
     dateFormat: function(val) {
-      return moment(val).format("MMMM Do YYYY, h:mm:ss a")
+      return moment(val).format("MMMM Do YYYY, h:mm:ss a Z z")
     },
     ifEquals: function(arg1, arg2, options) {
       return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
@@ -280,7 +286,15 @@ var hbs = exphbs.create({
       return JSON.stringify(object, null, 2);
     },
     json: function(context) {
-      return JSON.stringify(context);
+          var temp = JSON.stringify(context)
+          try {
+          temp1 = JSON.parse(temp)
+          var temp2 = JSON.stringify(temp1)
+          } catch (err){
+          console.trace(context,temp,err)
+          var temp = context
+          }
+      return temp2;
     },
     partial: function (name) {
       return name;

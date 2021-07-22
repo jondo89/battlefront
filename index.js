@@ -11,16 +11,16 @@ var exphbs = require('express-handlebars');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var recaptcha = require('express-recaptcha');
-var braintree = require("braintree");
 var helpers = require('handlebars-helpers')(['string','moment']);
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 var moment = require("moment");
 MomentHandler.registerHelpers(Handlebars);
 
-dotenv.config()
+dotenv.config({silent: true})
 //Primary app variable.
 var app = express();
+
 
 ///////////////////////////////////////
 ///////   FAVICON LOCATION    ////////
@@ -55,16 +55,6 @@ db.once('open', function() {
   console.log('\x1b[36m%s\x1b[0m',process.env.MONGODBNAME ,' : mongoose connection ok')
   //compile the schema for mongoose
 });
-
-////////////////////////////////////////////
-///////   BRAINTREE INTEGRATION    ////////
-//////////////////////////////////////////
-var gateway = braintree.connect({
-  environment: braintree.Environment.Sandbox,
-  merchantId: process.env.MERCHANTID,
-  publicKey: process.env.PUBLICKEY,
-  privateKey: process.env.PRIVATEKEY
-});
 /////////////////////////////////////////////
 ///////   HTTPS TRAFFIC REDIRECT    ////////
 ///////////////////////////////////////////
@@ -92,12 +82,17 @@ app.use(logger('dev'));
 //extend
 app.use(bodyParser.json({limit: '200mb'}));
 app.use(bodyParser.urlencoded({limit: '200mb', extended: true}));
-//app.use(expressValidator());//this worked then did not , no idea why.
 app.use(methodOverride('_method'));
-app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));
+if(process.env.SESSION_SECRET){
+  app.use(session({ secret: process.env.SESSION_SECRET, resave: true, saveUninitialized: true }));  
+} else{
+  console.log('Your .env file is incorrectly configured.')
+}
+
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use(function(req, res, next) {
   res.locals.website = myModule.website
   res.locals.logo = myModule.logo
@@ -159,6 +154,8 @@ app.use(function (req, res, next) {
   res.locals.collections = collections
   next();
 })
+
+
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
@@ -166,6 +163,8 @@ var fraternate = require("fraternate");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
+
+
 /////////////////////////////////////////////////
 ////       HEAVYLIFTING NPM MODULE          //// 
 ///////////////////////////////////////////////

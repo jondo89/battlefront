@@ -51,6 +51,23 @@
       "navmenu2":"false",
       "navmenu3":"false",
       "description": "Create, read, update and delete your gamedata. , This is a test"
+    },   
+     "components": {
+      "collection": "gamedata",
+      "collectionName": "gamedata",
+      "formcollectionname": "gamedata",
+      "datacollectionname": "gamedata",
+      "additionaldetailcollection": "gamedata",
+      "rawform": "58aa74130b9d3241280ecf16",
+      "parentids": "5f88285ef1bddc2a4484dd55",
+      "navigationform": "58aa74150b9d3241280ecf18",
+      "primaryform": "58aa74120b9d3241280ecf16",
+      "formcreator":"58aa74140b9d3241280ecf17",
+      "pagetitle": "Components",
+      "navmenu1":"true",
+      "navmenu2":"false",
+      "navmenu3":"false",
+      "description": "Create, read, update and delete your gamedata. , This is a test"
     },
     "gameform": {
       "collectionName": "gamedata",
@@ -63,9 +80,9 @@
       "primaryform": "58aa74120b9d3241280ecf16",
       "formcreator":"58aa74140b9d3241280ecf17",
       "pagetitle": "Game Forms",
-      "navmenu1":"true",
+      "navmenu1":"false",
       "navmenu2":"false",
-      "navmenu3":"false",
+      "navmenu3":"true",
       "description": ""
     },"shop": {
       "collectionName": "shop",

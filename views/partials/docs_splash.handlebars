@@ -1,8 +1,3 @@
-<style type="text/css">
-	.card-columns {
-		column-count: 5;
-	}
-</style>
 <div class="row">
   {{#if navmenu.0.entry.image}}
   <div class="col-9">
@@ -19,7 +14,9 @@
           <i class="display-4 far fa-folder-open"></i> 
         </span>
         {{else}}
+        <span class="doc_html_icon">
         <i class="display-4 {{navmenu.0.entry.icon}}"></i> 
+        </span>
         {{/unless}}      
         {{#if navmenu.0.entry.descriptionpage}}
         {{navmenu.0.entry.descriptionpage}}
@@ -27,30 +24,32 @@
         {{navmenu.0.name}}
         {{/if}}   
       </h1>
-    </div>
-    {{#if navmenu.0.entry.image}}
-    <div class="col-3" style="text-align: right;">  
-      <img class="img-thumbnail rounded " src="{{navmenu.0.entry.image}}">    
-    </div>
-    {{/if}}
-    {{#if navmenu.0.image}}
-    <div class="col-3" style="text-align: right;">  
-      <img class="img-thumbnail rounded " src="{{navmenu.0.image}}">    
-    </div>
-    {{/if}}
-    <div class="col-md-12">
       <p class="lead">
         {{dots 555 navmenu.0.entry.detail}}
       </p>
     </div>
-  </div>
-<nav>
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-    <br>
-    <div class="alert alert-primary" role="alert">
-      <h3>{{siteName}}</h3>
-      <p>{{sitedescription}}
-      </p>
+    {{#if navmenu.0.entry.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.entry.image}}">    
+    </div>
+    {{/if}}
+    {{#if navmenu.0.image}}
+    <div class="col-3" style="text-align: right;">  
+      <img class="img-thumbnail rounded " style="border-color:black;padding: 0px" src="{{navmenu.0.image}}">    
+    </div>
+    {{/if}}
+    <div class="col-md-12">
+      <br>
+      {{>docs_groupcollection}}
     </div>
   </div>
-<br>
+  <nav>
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <br>
+      <div class="alert alert-primary" role="alert">
+        <h3>{{siteName}}</h3>
+        <p>{{sitedescription}}
+        </p>
+      </div>
+    </div>
+    <br>

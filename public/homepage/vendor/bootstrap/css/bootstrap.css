@@ -3282,7 +3282,7 @@ input[type="button"].btn-block {
 .btn-group-vertical {
   position: relative;
   display: -ms-inline-flexbox;
-  display: inline-flex;
+  /* display: inline-flex; */
   vertical-align: middle;
 }
 

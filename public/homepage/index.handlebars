@@ -2,36 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="Cleaner-Wrasse is an open-source issue tracking CRUD designed to duplicate the Github issue tracking system. Download the Full stack boilerplate using Node.js Mongodb Express.js Handlebars.js from Github.">
-  <meta name="keywords" content="comments,boilerplate,mongodB, NodeJS, expressjs , Handlebars.js">
+  <meta name="description" content="Battlefront Posleen Wars.">
+  <meta name="keywords" content="Space Warfare">
   <meta name="author" content="Jonathan Davies">
-  <meta name="google-site-verification" content="V6ZQykcqytIxvH_JCfowxQfGXB9Qn-rgaQ-iIrtoW3c" />
-  <title>{{siteName}}</title>
-  {{>css}}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google-site-verification" content="FFeVVyEdXvXp3vyuEh2x1BDX-vjM0KT-ECMmm6RvMZc" />
+  <title>{{pagetitle}}</title>
 </head>
 <body id="page-top">
- <script async defer src="https://buttons.github.io/buttons.js"></script>
- 
- {{>javascript}}
- {{>navigation}}
- <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
- <style type="text/css">
-  #toToppo a {
-    padding: 5px 5px;
-    background: #000;
-    color: #fff;
-    position: fixed;
-    z-index: -15px;
-    bottom: 15px;
-    right: 15px;
-    display: none;
-    text-decoration: none;
-    border-radius: 5px
-  }
-</style>
-
-<script type="text/javascript">
-  $(document).ready(function(){
+  {{>css fontawesome=true bootstrap=true custom=true datatable=true approve=true}}
+  {{>javascript bootstrap=true approve=true googlemaps=true datatable=true recapture=true fontawesome=true}}
+  {{>navigation}}
+  <div id='toToppo' style="z-index: 1000;  position:relative"><a href="#" title="Scroll to top of page."><i class="fa fa-arrow-up fa-2x" aria-hidden="true"></i></a></div>
+  <style type="text/css">
+    #toToppo a {
+      padding: 5px 5px;
+      background: #000;
+      color: #fff;
+      position: fixed;
+      z-index: -15px;
+      bottom: 15px;
+      right: 15px;
+      display: none;
+      text-decoration: none;
+      border-radius: 5px
+    }
+    .error-text {
+    color: #dc3545!important;
+    font-size: small;
+}
+  </style>
+  <script type="text/javascript">
+    $(document).ready(function(){
                 //Check to see if the window is top if not then display button
                 $(window).scroll(function(){
                   if ($(this).scrollTop() > 100) {
@@ -51,41 +53,39 @@
               <div class="container h-100">
                 <div class="row h-100">
                   <div class="col-lg-7 my-auto">
-                    <div class="header-content mx-auto" style="text-align: center;">
-                      <h1 class="display-1"><img src="/img/Logo square inverse 50x50.png" style="max-height: 300px">  Battlefront</h1> 
-                      <h2>Posleen Wars.</h2>
-                      <p class="lead">The battle for the galaxy has begun. </p>
-                      <div style="padding-top: 25px">
-                        <p></p>
+                    <div class="header-content mx-auto">
+                      <h1 class="display-1">{{siteName}} - Galactic Warfare.</h1>
+                      <p class="lead"> 
+
+
+Galactic Warfare is about one thing  , killing Posleen . 
+
+An invading army of billions is approaching earth from various planetary launch points, and the fate of the human race hangs in the balance .
+
+You are a well-trained, poorly equipped member of the newly created Galactic Federation, you job is hunt and destroy the Posleen for bounty. 
+
+Can you destroy enough Posleen to finance the protection of the earth?
+
+
+
+ </p>
+
+
+
+                      <div class="btn-group btn-group-lg btn-block" role="group" style="text-align: center;">
+                        <a href="/signup" style="width: 47%" role="button" class="btn btn-outline-warning ">Get Started.</a>
+                        <a href="#conveyors" role="button"  style="width: 47%" class="btn btn-outline-light">Download</a>
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-5 my-auto">
-                    {{#unless user}} 
-                    {{> signuphomepage}}  
-                    {{/unless}}
-                  </div>
-                </div>
-              </div>
-            </header>
-      <!-- Modal -->
-      <div class="modal fade bd-example-modal-lg" tabindex="-1" id="exampleModalScrollable" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalScrollableTitle">Flag and Issue</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <div id="ajaxFormLocationmodal"></div>      </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        {{>footer}}
-      </body>
-      </html>
+                   {{> signuphomepage}}  
+                 </div>
+               </div>
+             </div>
+           </header>
+          
+     {{> analytics}}
+    
+   </body>
+   </html>

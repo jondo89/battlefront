@@ -12,11 +12,12 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 var recaptcha = require('express-recaptcha');
 var braintree = require("braintree");
-var helpers = require('handlebars-helpers')(['string']);
+var helpers = require('handlebars-helpers')(['string','moment']);
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
+var moment = require("moment");
 MomentHandler.registerHelpers(Handlebars);
- 
+
 dotenv.config()
 //Primary app variable.
 var app = express();
@@ -39,7 +40,7 @@ mongoose.set('useUnifiedTopology', true);
 if (process.env.MONGODB_URI) {
   mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 } else {
-  mongoose.connect(process.env.MONGODB, {useNewUrlParser: true,ignoreUndefined: true});
+  mongoose.connect(process.env.MONGODB, {useNewUrlParser: true});
 }
 //Mongo error trap.
 mongoose.connection.on('error', function() {
@@ -50,10 +51,10 @@ mongoose.connection.on('error', function() {
 var db = mongoose.connection;
 db.once('open', function() {
   // we're connected!
-    console.log('\x1b[36m%s\x1b[0m',process.env.MONGODBNAME ,' : mongoose connection ok')
+  console.log('\x1b[36m%s\x1b[0m',process.env.MONGODBNAME ,' : mongoose connection ok')
   //compile the schema for mongoose
 });
- 
+
 ////////////////////////////////////////////
 ///////   BRAINTREE INTEGRATION    ////////
 //////////////////////////////////////////
@@ -67,7 +68,7 @@ var gateway = braintree.connect({
 ///////   HTTPS TRAFFIC REDIRECT    ////////
 ///////////////////////////////////////////
 // Redirect all HTTP traffic to HTTPS
- function ensureSecure(req, res, next){
+function ensureSecure(req, res, next){
   if(req.headers["x-forwarded-proto"] === "https"){
   // OK, continue
   return next();
@@ -101,34 +102,41 @@ app.use(function(req, res, next) {
     res.locals.user = JSON.parse(JSON.stringify(req.user));
   }
     res.locals.TRACKINGCODEGA = process.env.TRACKINGCODEGA;//expose the google analytics tracking code for use.
-  next();
-});
+    next();
+  });
 app.use(express.static(path.join(__dirname, 'public')));
-//DELETE
-//app.use(express.static(path.join(__dirname, 'node_modules/jquery/')));//spicific directory for jquery
 ///////////////////////////////////////////////s
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
 var myModule = require('./app.json');
-var sitename = myModule.sitename
-var website = myModule.website
-var sitedescription = myModule.sitedescription
-var repo = myModule.repo
-app.locals.sitename = sitename
-app.locals.website = website
-app.locals.sitedescription = sitedescription
-app.locals.repo = repo
+
+//META SEO ITEMS
+app.locals.sitename = myModule.sitename
+app.locals.website = myModule.website
+app.locals.sitedescription = myModule.description
+app.locals.repo = myModule.repo
+app.locals.author = myModule.author
+app.locals.keywords = myModule.keywords
+app.locals.tagline = myModule.tagline
+//Define the partials directory
 var partialsDir = ['views/partials']
+//Set up css and javasciprt locals.
+app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
+app.use(express.static(__dirname + '/node_modules/jquery/dist'));
+app.use(express.static(__dirname + '/node_modules/popper.js/dist'));
+
+
 app.use(function(req, res, next) {
-  res.locals.sitedescription = sitedescription;
+  res.locals.siteversion = myModule.version
+  res.locals.sitedescription = myModule.description;
   next();
 });
+//Message Flashing for saving etc.
+var flash = require('connect-flash');
+app.use(flash());
 ///////////////////////////////
 ////       ROUTING        //// 
 /////////////////////////////
-
-
-
 //////////////////////////////////////////////////////////////
 ////       GET THE HEAVYLIFTING DATABASE STRUCTURE        //// 
 //////////////////////////////////////////////////////////////
@@ -157,6 +165,7 @@ var heavylifting = require("heavylifting");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/heavylifting/views/partials')
 app.use('/', heavylifting);
+
 ///////////////////////////////////////////////////
 ////       CLEANER-WRASSE NPM MODULE          //// 
 /////////////////////////////////////////////////
@@ -174,13 +183,56 @@ app.use('/', semini);
 /////////////////////////////////
 ////       HOME             //// 
 ///////////////////////////////
+
+
+var organizationController = require("./node_modules/fraternate/controllers/organization");//In order to pass the user orginizational structure this needs to be here.
+var userController = require('./node_modules/fraternate/controllers/user');
 var HomeController = require('./controllers/home');
 app.get('/',
+  organizationController.userorganizations,
   HomeController.index
-);
+  );
 app.get('/contact',
   HomeController.contact
-); 
+  ); 
+
+
+
+app.get('/workspace',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace
+  ); 
+app.get('/workspace/org/:organization_name',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace
+  ); 
+app.get('/workspace/org/:organization_name/:slug',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects
+  );
+app.get('/workspace/user/:username/:slug',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects
+  );
+app.get('/workspace/org/:organization_name/:slug/:template',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects_template
+  );
+app.get('/workspace/user/:username/:slug/:template',
+  organizationController.userorganizations,
+  userController.ensureAuthenticated,
+  HomeController.workspace_projects_template
+  );
+ 
+
+
+
+
 //////////////////////////////////////////
 ////        CREATE UNIQUE ID         //// 
 ////////////////////////////////////////
@@ -193,7 +245,7 @@ function create_uid() {
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
   s4() + '-' + s4() + s4() + s4();
 }
- 
+
 /////////////////////////////////////////
 ///////   HANDLEBARS HELPERS    ////////
 ///////////////////////////////////////
@@ -201,6 +253,10 @@ var hbs = exphbs.create({
   defaultLayout: __dirname+'/views/layouts/main',
   partialsDir:partialsDir,
   helpers: {
+   
+    dateFormat: function(val) {
+      return moment(val).format("MMMM Do YYYY, h:mm:ss a")
+    },
     ifEquals: function(arg1, arg2, options) {
       return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
     },
@@ -222,6 +278,9 @@ var hbs = exphbs.create({
     },
     toJSON : function(object) {
       return JSON.stringify(object, null, 2);
+    },
+    json: function(context) {
+      return JSON.stringify(context);
     },
     partial: function (name) {
       return name;
@@ -249,6 +308,7 @@ var hbs = exphbs.create({
   });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
 /////////////////////////////
 ////       500          //// 
 /////////////////////////// 
@@ -263,17 +323,14 @@ app.use(function(err, req, res, next) {
   res.status(500);
   res.redirect('/500');
 });
-
-
-
 /////////////////////////////
 ////       500          //// 
 ///////////////////////////
 app.get('/500', function(req, res){
   console.log('Calling the 500 error')
   res.render('500',{
-    siteName : sitename,
-    pagetitle : 'Error 500' + ' | '+sitename,
+    siteName : myModule.sitename,
+    pagetitle : 'Error 500' + ' | '+myModule.sitename,
     layout:false
   });
 }); 
@@ -282,12 +339,11 @@ app.get('/500', function(req, res){
 ///////////////////////////
 app.get('*', function(req, res){
   res.status(404).render('404',{
-    siteName : sitename,
-    pagetitle : 'Error 404' + ' | '+sitename,
+    siteName : myModule.sitename,
+    pagetitle : 'Error 404' + ' | '+myModule.sitename,
     layout:false
   });
 });
-
 // Production error handler
 if (app.get('env') === 'production') {
   app.use(function(err, req, res, next) {
@@ -295,10 +351,8 @@ if (app.get('env') === 'production') {
     res.sendStatus(err.status || 500);
   });
 }
-
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
-
 
 module.exports = app;

@@ -1,11 +1,27 @@
 <div class="panel panel-default">
-      <div class="panel-heading">
-            <h5>Personal settings</h5>
-      </div>
-      <ul class="list-group">
-            <a class="list-group-item {{#if profile}}active{{/if}}" href="/users/{{user.username}}/settings/profile">Profile</a>
-            <a class="list-group-item {{#if account}}active{{/if}}" href="/users/{{user.username}}/settings/account">Account</a>
-            <a class="list-group-item {{#if organizations}}active{{/if}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
-            <a class="list-group-item {{#if billing}}active{{/if}}" href="/users/{{user.username}}/settings/billing">Billing</a>
-      </ul>
+	<div class="panel-heading">  
+	</div>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<div class="row">
+				<div class="col-md-3"><a href="/users/{{user.username}}">
+					{{#if user.image}}
+					<img src="{{user.image}}" class="img-fluid mr-1" style="border-radius: 50%;max-width: 100%">
+					{{else}}
+					<img src="https://www.gravatar.com/avatar/{{user._id}}?s=92&d=retro&r=G" class="img-fluid mr-1" style="border-radius: 50%;">
+					{{/if}}
+				</a></div>
+				<div class="col-md-9"><h5 style="font-size: small;">{{user.username}} • <small style="font-size: small;">Personal settings</small></h5></div>
+			</div>
+		</li>
+		<a class="list-group-item {{#ifEquals templateName 'Profile'}}active{{/ifEquals}}" href="/users/{{user.username}}/settings/profile">Profile</a>
+		<a class="list-group-item {{#ifEquals templateName 'Account'}}active{{/ifEquals}}" href="/users/{{user.username}}/settings/account">Account</a>
+		<a class="list-group-item {{#ifEquals templateName 'Organizations'}}active{{/ifEquals}}" href="/users/{{user.username}}/settings/organizations">Organizations</a>
+		<a class="list-group-item {{#ifEquals templateName 'Billing'}}active{{/ifEquals}}" href="/users/{{user.username}}/settings/billing">Billing</a>
+	</ul>
 </div>  
+<style type="text/css">
+	.list-group-item:hover{
+		text-decoration: none!important;
+	}
+</style>

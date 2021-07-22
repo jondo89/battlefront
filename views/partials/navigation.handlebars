@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <a class="navbar-brand" href="/" style=" ">
-    <img alt="{{siteName}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;width:35px;padding: 5px"> 
+    <img alt="{{siteName}}" title="{{siteName}}" src="/img/Logo square inverse 50x50.png" style="height: 35px;width:35px;padding: 5px"> 
   </a> 
-{{>searchbar}}
+  {{>searchbar}}
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -13,7 +13,7 @@
       {{#each collections}}
       {{#ifEquals this.navmenu1 'true'}}
       <li >
-        <a class="nav-link" style="color: white" href="/{{@key}}">{{this.pagetitle}}</a>
+        <a class="nav-link {{#ifEquals @key ../routes}}active{{/ifEquals}}"   href="/{{@key}}">{{this.pagetitle}}</a>
       </li>
       {{else}}
       {{/ifEquals}}
@@ -23,14 +23,11 @@
       {{#each collections}}
       {{#ifEquals this.navmenu4 'true'}}
       <li>
-        <a class="nav-link"  href="/{{@key}}">{{this.pagetitle}}</a>
+        <a class="nav-link {{#ifEquals @key ../routes}}active{{/ifEquals}}"  href="/{{@key}}">{{this.pagetitle}}</a>
       </li>
       {{else}}
       {{/ifEquals}}
       {{/each}}
-      <li>
-        <a class="nav-link mr-3" href="/issues/view">Issues</a>
-      </li>  
       {{#if user}}
       {{#ifEquals user.permission 'superadmin'}}
       <li class="nav-item dropdown">
@@ -67,55 +64,57 @@
       <!-- Custom Content goes here. -->
       <!-- Custom Content goes here. -->
       {{#if user}}
-      {{#if user}}
-      {{#each collections}}
-      {{#ifEquals this.navmenu2 'true'}}
-      <a class="nav-link" style="color: white" href="/{{@key}}">{{this.pagetitle}}</a>
-      {{else}}
-      {{/ifEquals}}
-      {{/each}}
-    </li>
-    {{/if}}
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-secondary dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span>
-      </button>
-      <div class="dropdown-menu dropdown-menu-right">
-        <a  class="dropdown-item" href="/organizations/new-payfast"><i class="fas fa-users"></i> New Organization</a>
-        <div class="dropdown-divider"></div>
-        <a class="dropdown-item" href="/issues/new/sitewide"><i class="text-success fas fa-exclamation-circle"></i> New Issue</a>
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fa fa-plus" aria-hidden="true"></i> <span class="caret"></span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right">
+ 
+          <a  class="dropdown-item" href="/organization/new"><i class="fas fa-users"></i> New Organization</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/issues/new/sitewide"><i class="text-success fas fa-exclamation-circle"></i> New Issue</a>
+        </div>
       </div>
-    </div>
-    {{/if}}
-    <!-- Custom Content goes here. -->
-    <!-- Custom Content goes here. -->
-    {{#if user}}
-    <div class="btn-group">
-      <button type="button" class="btn btn-outline-secondary dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{#if user.image}}
-        <img src="{{user.image}}" class="navbar-avatar-pic" style=" ">
-        {{else}}
-        <img src="https://www.gravatar.com/avatar/{{user._id}}?s=32&d=retro&r=G" class="navbar-avatar-pic" style=" ">
-        {{/if}}
-        <i class="caret"></i>
-      </button>
-      <div class="dropdown-menu dropdown-menu-right"  id="usermenu"> 
-        <a  class="dropdown-item" >Signed in as <strong>{{user.username}}</strong>  </a>
-        <div class="dropdown-divider"></div>   
-        <a  class="dropdown-item" href="/users/{{user.username}}">Your Profile</a>
-        <a  class="dropdown-item" href="/users/{{user.username}}/settings/profile">Settings</a>
-        <div class="dropdown-divider"></div> 
-        <a  class="dropdown-item" href="/issues/view">Issues - {{siteName}}</a>
-        <div class="dropdown-divider"></div> 
-        <a  class="dropdown-item" href="/signout">Sign out</a>
-      </div>
-    </div>
-    {{else}}
-    <li style="display: inline-flex;color: grey;">
-      <a style="color: white"  class="nav-link mr-2" href="/signin">Sign in</a>
-      <a class="btn btn-outline-secondary" style="color: white;white-space: nowrap;" class="nav-link" href="/signup">Sign up</a> 
       {{/if}}
       <!-- Custom Content goes here. -->
-    </ul>
-  </div>
-</nav>
+      <!-- Custom Content goes here. -->
+      {{#if user}}
+      <div class="btn-group">
+        <button type="button" class="btn btn-outline-secondary dropdown-toggle mr-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{#if user.image}}
+          <img src="{{user.image}}" class="navbar-avatar-pic" style=" ">
+          {{else}}
+          <img src="https://www.gravatar.com/avatar/{{user._id}}?s=32&d=retro&r=G" class="navbar-avatar-pic" style=" ">
+          {{/if}}
+          <i class="caret"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-right"  id="usermenu"> 
+          <a  class="dropdown-item" >Signed in as <strong>{{user.username}}</strong>  </a>
+          <div class="dropdown-divider"></div>   
+          <a  class="dropdown-item" href="/users/{{user.username}}">Your Profile</a>
+          <a  class="dropdown-item" href="/users/{{user.username}}/settings/organizations">Your Organizations</a>
+          <a  class="dropdown-item" href="/users/{{user.username}}/settings/profile">Your Settings</a>
+          <div class="dropdown-divider"></div> 
+          {{#each collections}}
+          {{#ifEquals this.navmenu5 'true'}}
+          <a class="dropdown-item"  href="/{{@key}}">{{this.pagetitle}}</a>
+          {{else}}
+          {{/ifEquals}}
+          {{/each}}
+          <div class="dropdown-divider"></div> 
+          <a  class="dropdown-item" href="/issues/view">Issues</a>
+          <div class="dropdown-divider"></div> 
+          <a  class="dropdown-item" href="/signout">Sign out</a>
+        </div>
+      </div>
+      {{else}}
+      <li style="display: inline-flex;color: grey;">
+        <a style="color: white"  class="nav-link mr-2" href="/signin">Sign in</a>
+        <a class="btn btn-outline-secondary" style="color: white;white-space: nowrap;" class="nav-link" href="/signup">Sign up</a> 
+        <a class="ml-1 btn btn-outline-secondary" style="color: white;white-space: nowrap;" title="sign in with Google" class="nav-link" href="/auth/google"><i class="fab fa-google"></i></a> 
+        
+        {{/if}}
+        <!-- Custom Content goes here. -->
+      </ul>
+    </div>
+  </nav>

@@ -6,7 +6,7 @@ const express = require('express');
 
 //This looks for the presence of these teampltes in the site directory.
 var testlist = [
-'./views/partials/docs_splash.handlebars',
+'./views/partials/docs_ajax_splash.handlebars',
 './views/partials/navigation.handlebars',
 './views/partials/topofpage.handlebars',
 './views/404.handlebars',

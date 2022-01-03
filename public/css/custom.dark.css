@@ -251,7 +251,7 @@ input {
     width: 0;
     z-index: 1;
     border-style: solid;
-    border-color: transparent #dee2e6;
+    border-color: transparent #686868;
     border-width: 12px 20px 12px 0;
     top: 20px;
     left: -20px;
@@ -263,7 +263,7 @@ input {
     width: 0;
     z-index: 0;
     border-style: solid;
-    border-color: transparent #ffffff;
+    border-color: transparent #686868;
     border-width: 13px 21px 13px 0;
     top: 20px;
     left: -21.5px;
@@ -281,55 +281,7 @@ input {
 }
 
 
-
-.reportBody{
-    position: relative;
-    width: 80%;
-    padding: 50px;
-    margin: 0 auto;
-    background-color: #fff;
-    -webkit-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    -moz-box-shadow: 0 0 4px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 50px rgba(0, 0, 0, 0.1);
-  }
-  .toc{
-    min-height: 150px;
-    border:grey ;
-  }
-  .gogooseColoumn
-  {
-    padding: 15px;
-    background: #64676b
-  }
-  .reportBody{
-    font-size: small;
-  }
-  .reportBody   h1{
-    
-    font-weight: 300!important;
-    line-height: 1.2;
-  }
-  .reportBody   h2{
-    
-    font-weight: 300!important;
-    line-height: 1.2;
-  }
-  .reportBody   h3{
-    
-    font-weight: 300!important;
-    line-height: 1.2;
-  }
-  .reportBody  h4{
-    
-    font-weight: 300;
-    line-height: 1.2;
-  }
-  .reportBody   h5{
-    
-    font-weight: 300;
-    line-height: 1.2;
-  }
-  .table_cell_not_zero{
+   .table_cell_not_zero{
     background-color: #007bff
   }
   .table_cell_not_zero a{
@@ -344,4 +296,17 @@ input {
   .table_cell_not_zero a:hover{
     color: rgb(255 255 254 / 70%)!important
   }
+  .table_cell_not_zero input{
+  border-color:  white!important;
+  }
 
+  
+  .htCore  {
+ color: black;
+ 
+  }
+
+ 
+  .card-columns {
+   column-count: 4;
+ }

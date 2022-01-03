@@ -15,13 +15,14 @@ var helpers = require('handlebars-helpers')(['string','moment']);
 var Handlebars = require("handlebars");
 var MomentHandler = require("handlebars.moment");
 var moment = require("moment");
-MomentHandler.registerHelpers(Handlebars);
 
+
+var util = require('handlebars-utils');
+
+MomentHandler.registerHelpers(Handlebars);
 dotenv.config({silent: true})
 //Primary app variable.
 var app = express();
-
-
 ///////////////////////////////////////
 ///////   FAVICON LOCATION    ////////
 /////////////////////////////////////
@@ -88,14 +89,28 @@ if(process.env.SESSION_SECRET){
 } else{
   console.log('Your .env file is incorrectly configured.')
 }
-
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+
+
+
+
+
+
 app.use(function(req, res, next) {
   res.locals.website = myModule.website
   res.locals.logo = myModule.logo
+
+
+  if(process.env.DARKMODE =='true'){
+       res.locals.themedark = true
+  }  
+
+
+
   if(req.user){
     res.locals.user = JSON.parse(JSON.stringify(req.user));
     res.locals.themedark = req.user.darkmode;
@@ -109,7 +124,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
 var myModule = require('./app.json');
-
 //META SEO ITEMS
 app.locals.sitename = myModule.sitename
 app.locals.website = myModule.website
@@ -118,17 +132,12 @@ app.locals.repo = myModule.repo
 app.locals.author = myModule.author
 app.locals.keywords = myModule.keywords
 app.locals.tagline = myModule.tagline
-
-
-
 //Define the partials directory
 var partialsDir = ['views/partials']
 //Set up css and javasciprt locals.
 app.use(express.static(__dirname + '/node_modules/bootstrap/dist'));
 app.use(express.static(__dirname + '/node_modules/jquery/dist'));
 app.use(express.static(__dirname + '/node_modules/popper.js/dist'));
-
-
 app.use(function(req, res, next) {
   res.locals.siteversion = myModule.version
   res.locals.sitedescription = myModule.description;
@@ -155,7 +164,6 @@ app.use(function (req, res, next) {
   next();
 })
 
-
 ///////////////////////////////////////////////
 ////       FRATERNATE NPM MODULE          //// 
 /////////////////////////////////////////////
@@ -163,8 +171,6 @@ var fraternate = require("fraternate");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/fraternate/views/partials')
 app.use('/', fraternate);
-
-
 /////////////////////////////////////////////////
 ////       HEAVYLIFTING NPM MODULE          //// 
 ///////////////////////////////////////////////
@@ -172,7 +178,6 @@ var heavylifting = require("heavylifting");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/heavylifting/views/partials')
 app.use('/', heavylifting);
-
 ///////////////////////////////////////////////////
 ////       CLEANER-WRASSE NPM MODULE          //// 
 /////////////////////////////////////////////////
@@ -180,22 +185,25 @@ var cleaner_wrasse = require("cleaner-wrasse");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/cleaner-wrasse/views/partials')
 app.use('/', cleaner_wrasse);
-///////////////////////////////////////////////////
+
+
+
+//////////////////////////////////////////
 ////       SEMINI NPM MODULE          //// 
-/////////////////////////////////////////////////
+//////////////////////////////////////////
 var semini = require("semini");
 //Append the partial directory inside the NPM module.
 partialsDir.push('./node_modules/semini/views/partials')
 app.use('/', semini);
+
+
+
 /////////////////////////////////
 ////       HOME             //// 
 ///////////////////////////////
-
 var organizationController = require("./node_modules/fraternate/controllers/organization");//In order to pass the user orginizational structure this needs to be here.
 var userController = require('./node_modules/fraternate/controllers/user');
 var HomeController = require('./controllers/home');
-
-
 app.get('/',
   organizationController.userorganizations,
   HomeController.index
@@ -203,39 +211,6 @@ app.get('/',
 app.get('/contact',
   HomeController.contact
   ); 
-
-app.get('/workspace',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace
-  ); 
-app.get('/workspace/org/:organization_name',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace
-  ); 
-app.get('/workspace/org/:organization_name/:slug',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace_projects
-  );
-app.get('/workspace/user/:username/:slug',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace_projects
-  );
-app.get('/workspace/org/:organization_name/:slug/:template',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace_projects_template
-  );
-app.get('/workspace/user/:username/:slug/:template',
-  organizationController.userorganizations,
-  userController.ensureAuthenticated,
-  HomeController.workspace_projects_template
-  );
- 
-
 
 
 //////////////////////////////////////////
@@ -258,7 +233,16 @@ var hbs = exphbs.create({
   defaultLayout: __dirname+'/views/layouts/main',
   partialsDir:partialsDir,
   helpers: {
-   
+    adminfileedit: function (name) {
+      var html = ''  
+      if (process.env.DEBUG == 'true') {
+        html+='<a class="btn btn-outline-warning bt-sm adminedit" style="" data-filename='
+        html+= name.data.exphbs.filePath  
+        html+=' id="'+create_uid()+'" onclick="editFile(this.id)" href="#" class="text-warning">edit</a> '
+      }
+      return html;
+    },
+ 
     dateFormat: function(val) {
       return moment(val).format("MMMM Do YYYY, h:mm:ss a Z z")
     },
@@ -285,14 +269,14 @@ var hbs = exphbs.create({
       return JSON.stringify(object, null, 2);
     },
     json: function(context) {
-          var temp = JSON.stringify(context)
-          try {
-          temp1 = JSON.parse(temp)
-          var temp2 = JSON.stringify(temp1)
-          } catch (err){
-          console.trace(context,temp,err)
-          var temp = context
-          }
+      var temp = JSON.stringify(context)
+      try {
+        temp1 = JSON.parse(temp)
+        var temp2 = JSON.stringify(temp1)
+      } catch (err){
+        console.trace(context,temp,err)
+        var temp = context
+      }
       return temp2;
     },
     partial: function (name) {
@@ -316,12 +300,11 @@ var hbs = exphbs.create({
             return str.substring(0,550) + '...';
           return str;
         }
-      }
+      },
     }
   });
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
-
 /////////////////////////////
 ////       500          //// 
 /////////////////////////// 
@@ -367,5 +350,4 @@ if (app.get('env') === 'production') {
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
-
 module.exports = app;

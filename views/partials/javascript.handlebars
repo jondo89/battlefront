@@ -1,4 +1,4 @@
-<!-- Javascript -->
+
 
 {{#ifEquals bootstrap true}}
 <script type="text/javascript" src="/jquery.min.js"  integrity=""></script>
@@ -18,10 +18,12 @@
 <script type='text/javascript' src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAA8gCQ83YdkeNR3tTjcQRC-JkS57Y6OYY&#038;ver=4.6.1'></script>
 {{/ifEquals}}
 {{#ifEquals recapture true}}
-<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src='https://www.google.com/recaptcha/api.js?'></script>
 {{/ifEquals}}
 {{#ifEquals datatable true}}
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.21/b-1.6.3/b-colvis-1.6.3/b-flash-1.6.3/datatables.min.js"></script>
+ 
+<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.24/b-1.7.0/b-html5-1.7.0/b-print-1.7.0/datatables.min.js"></script>
+
 {{/ifEquals}}
 {{#ifEquals jstree true}}
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jstree/3.3.2/jstree.min.js'></script>
@@ -54,6 +56,4 @@
  {{else}}
 
 {{/if}}
- 
-
  

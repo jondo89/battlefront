@@ -5,6 +5,11 @@ var mongoose = require('mongoose')
   , ObjectId = Schema.ObjectId;
 
 ///////////////////////////////////////////////
+////     sssssssssssssssssssssssssssss       //// 
+/////////////////////////////////////////////
+
+
+///////////////////////////////////////////////
 ////     SET YOUR APP.JSON DETAILS        //// 
 /////////////////////////////////////////////
 //Not working ? try double dots on the json url..
@@ -50,7 +55,8 @@ var userSchema = new mongoose.Schema({
   google: String,
   publicemail:String,
   github: String,
-  vk: String
+  darkmode: Boolean,  
+  vk: String,
 }, schemaOptions);
 
 

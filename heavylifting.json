@@ -99,6 +99,22 @@
       "navmenu2":"false",
       "navmenu3":"false",
       "description": ""
+    },"templates": {
+      "collectionName": "gamedata",
+      "formcollectionname": "gamedata",
+      "datacollectionname": "gamedata",
+      "additionaldetailcollection": "gamedata",
+      "rawform": "58aa74130b9d3241280ecf16",
+      "parentids": "58aa74150b9d3241280ecf22",
+      "navigationform": "58aa74150b9d3241280ecf18",
+      "primaryform": "58aa74120b9d3241280ecf16",
+      "formcreator":"58aa74140b9d3241280ecf17",
+      "pagetitle": "Templates",
+      "navmenu1":"false",
+      "navmenu2":"false",
+      "navmenu3":"true",
+      "navmenu4":"false",
+      "description": ""
     }
   },
   "descriptions": {

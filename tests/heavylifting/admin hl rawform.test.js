@@ -407,11 +407,11 @@ var workingEntry6 = {
       done();
     });
   });      
-   test('421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.', function(done) {
+   test('421 - Intitate a check to see if the id or elementid is not the parentid. also check that it is not the parent id for this collection , this should just fail.(declared Legacy )', function(done) {
     request(app)
     .post('/dummydb/admincreateraw')
     .send(navigationtestdata421)
-    .expect(421)
+    .expect(200)
     .end(function(err, res) {
       if (err) return done(err);
       done();

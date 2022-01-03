@@ -20,7 +20,7 @@ var navigationtestdata416a = {
     descriptionpage: "416 ",
     detail: "416 - Fail routing with protected id usage. Core ids and elementid.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "416 ",
@@ -37,7 +37,7 @@ var navigationtestdata416b = {
     descriptionpage: "416 ",
     detail: "416 - Fail routing with protected id usage. Core ids and elementid.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "416 ",
@@ -54,7 +54,7 @@ var navigationtestdata416c = {
     descriptionpage: "416 ",
     detail: "416 - Fail routing with protected id usage. Core ids and elementid.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "416 ",
@@ -71,7 +71,7 @@ var navigationtestdata416d = {
     descriptionpage: "416 ",
     detail: "416 - Fail routing with protected id usage. Core ids and elementid.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "416 ",
@@ -88,7 +88,7 @@ var navigationtestdata417 = {
     descriptionpage: "417 ",
     detail: "417 - pass a testing variable to the post , with a element id that is blank , to determine if the item is copying the id to the elementid.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "417 ",
@@ -106,7 +106,7 @@ var navigationtestdata418 = {
     descriptionpage: "418 ",
     detail: "418 - pass a testing variable with an undefined childType to the post to make sure this test is working.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "418 ",
@@ -123,7 +123,7 @@ var navigationtestdata419 = {
     descriptionpage: "418 ",
     detail: "418 - pass a testing variable with an undefined childType to the post to make sure this test is working.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "418 ",
@@ -140,7 +140,7 @@ var navigationtestdata420 = {
     descriptionpage: "420 ",
     detail: "420 - blank parent ids should fail - that are not he parent id itself.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "420 ",
@@ -156,7 +156,7 @@ var navigationtestdata422 = {
     descriptionpage: "422 ",
     detail: "422 - The parentid is the same as the element id.",
     headings: [],
-    slug: "asd",
+    slug: chance.word({ length: 55 }),
     tabs: []
   },
   name: "422 ",
@@ -177,6 +177,7 @@ var navigationtestdata423 = {
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
     tabs: Array(0),
+    slug: chance.word({ length: 55 }),
     parent : '5f28e385833bbb1f6cfcaf07'
   },
   name:  '423',
@@ -195,7 +196,8 @@ var workingEntry1 = {
     descriptionpage: 'workingEntry1',
     detail: chance.paragraph({ sentences: 5 }),
     headings: Array(0),
-    tabs: Array(0)
+    tabs: Array(0),
+    slug: chance.word({ length: 55 }),
   },
   name:  'workingEntry1',
   parentid: "58d2010b118e812d18654119",
@@ -212,6 +214,7 @@ var workingEntry2 = {
     descriptionpage: 'workingEntry2',
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
+    slug: chance.word({ length: 55 }),
     tabs: Array(0)
   },
   name:  'workingEntry2',
@@ -229,6 +232,7 @@ var workingEntry3 = {
     descriptionpage: 'workingEntry3',
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
+    slug: chance.word({ length: 55 }),
     tabs: Array(0)
   },
   name:  'workingEntry3',
@@ -247,6 +251,7 @@ var workingEntry4 = {
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
     tabs: Array(0),
+    slug: chance.word({ length: 55 }),
     parent : '5f28e385833bbb1f6cfcaf07'
   },
   name:  'workingEntry4',
@@ -263,7 +268,8 @@ var workingEntry5 = {
     descriptionpage: 'workingEntry5',
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
-    tabs: Array(0)
+    tabs: Array(0),
+    slug: chance.word({ length: 55 }),
   },
   name:  'workingEntry5',
   parentid: "58d2010b118e812d18654119",
@@ -281,6 +287,7 @@ var workingEntry6 = {
     detail: chance.paragraph({ sentences: 55 }),
     headings: Array(0),
     tabs: Array(0),
+    slug: chance.word({ length: 55 }),
     parent : 'asdasd'
   },
   name:  'workingEntry6',
